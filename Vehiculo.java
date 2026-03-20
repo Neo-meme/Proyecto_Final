@@ -1,5 +1,5 @@
 public abstract class Vehiculo {
-   
+   private static int contador = 0;
     private String marca;
     private String modelo;
     private int velocidad;
