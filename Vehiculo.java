@@ -13,9 +13,9 @@ public abstract class Vehiculo {
     }
 
     //Funciones abstractas
-    public abstract void CalcularCosto(double distancia, double carga);
-    public abstract void CalcularTiempo(double distancia);
-    public abstract void ValidarCarga(double carga);
+    public abstract double CalcularCosto(double distancia, double carga);
+    public abstract double CalcularTiempo(double distancia);
+    public abstract double ValidarCarga(double carga);
 
 
     //Getters y Setters
