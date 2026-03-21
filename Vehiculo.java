@@ -1,12 +1,9 @@
 public abstract class Vehiculo {
-    private String marca;
-    private String modelo;
+
     private double velocidad;
     private double capacidad_carga;
 
-    public Vehiculo(String marca, String modelo, double velocidad, double capacidad_carga) {
-        this.marca = marca;
-        this.modelo = modelo;
+    public Vehiculo( double velocidad, double capacidad_carga) {
         this.velocidad = velocidad;
         this.capacidad_carga = capacidad_carga;
         
@@ -14,27 +11,17 @@ public abstract class Vehiculo {
 
     //Funciones abstractas
     public abstract double CalcularCosto(double distancia, double carga);
-    public abstract double CalcularTiempo(double distancia);
-    public abstract double ValidarCarga(double carga);
+
+    public double CalcularTiempo(double distancia){
+        return distancia / velocidad;
+    }
+
+    public boolean validarCarga(double carga) {
+        return carga <= capacidad_carga;
+    }
 
 
     //Getters y Setters
-    public String getMarca() {
-        return marca;
-    }
-
-    public void setMarca(String marca) {
-        this.marca = marca;
-    }
-
-    public String getModelo() {
-        return modelo;
-    }
-
-    public void setModelo(String modelo) {
-        this.modelo = modelo;
-    }
-
     public double getVelocidad() {
         return velocidad;
     }

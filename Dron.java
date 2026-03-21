@@ -1,25 +1,15 @@
 public class Dron extends Aereos {
 
-    public Dron(String marca, String modelo, double velocidad, double capacidad_carga) {
-        super(marca, modelo, velocidad, capacidad_carga);
+    private static final double velocidad = 72.0; // Velocidad promedio en km/h
+    private static final double capacidad_carga = 100; // Capacidad de carga en kg
+
+    public Dron( ) {
+        super(velocidad, capacidad_carga);
     }
 
-    @Override
+  @Override
     public double CalcularCosto(double distancia, double carga) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'CalcularCosto'");
-    }
-
-    @Override
-    public double CalcularTiempo(double distancia) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'CalcularTiempo'");
-    }
-
-    @Override
-    public double ValidarCarga(double carga) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'ValidarCarga'");
+        return distancia * 2 + carga * 0.1;
     }
 
 }

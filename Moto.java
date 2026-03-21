@@ -1,25 +1,15 @@
 public class Moto extends Terrestres {
+    
+    public static final double velocidad = 90.0; // Velocidad promedio en km/h
+    public static final double capacidad_carga = 1000; // Capacidad de carga en Kg siendo la conversion de 1 tonelada a kg
 
-    public Moto(String marca, String modelo, double velocidad, double capacidad_carga) {
-        super(marca, modelo, velocidad, capacidad_carga);
+    public Moto( ) {
+        super( velocidad, capacidad_carga);
     }
 
-    @Override
+   @Override
     public double CalcularCosto(double distancia, double carga) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'CalcularCosto'");
-    }
-
-    @Override
-    public double CalcularTiempo(double distancia) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'CalcularTiempo'");
-    }
-
-    @Override
-    public double ValidarCarga(double carga) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'ValidarCarga'");
+        return distancia * 0.5 + carga * 0.2;
     }
 
 }

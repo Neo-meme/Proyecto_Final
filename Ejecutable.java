@@ -53,12 +53,6 @@ public class Ejecutable{
         int tipo = sc.nextInt();
         sc.nextLine();
 
-        System.out.println("Ingrese la marca:");
-        String marca = sc.nextLine();
-
-        System.out.println("Ingrese el modelo:");
-        String modelo = sc.nextLine();
-
         System.out.println("Ingrese la velocidad:");
         double velocidad = sc.nextDouble();
 
@@ -67,11 +61,11 @@ public class Ejecutable{
 
         switch(tipo){
             case 1:
-                return new Automovil(marca, modelo, velocidad, capacidadCarga);
+                return new Automovil( velocidad, capacidadCarga);
             case 2:
-                return new Moto(marca, modelo, velocidad, capacidadCarga);
+                return new Moto(velocidad, capacidadCarga);
             case 3:
-                return new Camion(marca, modelo, velocidad, capacidadCarga);
+                return new Camion( velocidad, capacidadCarga);
             default:
                 System.out.println("Opción inválida");
                 return null;
