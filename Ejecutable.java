@@ -15,7 +15,7 @@ public class Ejecutable{
              System.out.println("2. Aéreo");
              System.out.println("0. Salir");
              System.out.println("Ingrese su opción:");
-             
+             option=sc.nextInt();
 
             switch (opcion) {
                 case 1:
