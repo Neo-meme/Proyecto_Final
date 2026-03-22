@@ -11,12 +11,22 @@ public abstract class Vehiculo {
     }
 
     // Método abstracto (cada vehículo lo define)
-    public abstract double calcularCosto(double distancia, double carga);
+    protected abstract double calcularCosto(double distancia, double carga);
+
+    protected abstract double calcularHuella(double distancia, double carga);
+    
 
     // Método general
-    public double calcularTiempo(double distancia) {
-        return distancia / velocidad;
+    public String  calcularTiempo(double distancia) {
+       double tiempo = distancia / velocidad;
+
+        int horas = (int) tiempo;
+        int minutos = (int) ((tiempo - horas) * 60);
+
+        return "Tiempo estimado: " + horas + " horas y " + minutos + " minutos";
     }
+
+
     /* Los métodos de validación de carga y distancia
         no son Abstractos porque la validación de carga y distancia es igual para todos los vehículos ya que se limitaron para facilitrar el ejercicio,
         por lo que no es necesario obligar a las subclases a implementarla.
