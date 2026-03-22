@@ -14,13 +14,7 @@ public class Moto extends Terrestres {
     }
 
     @Override
-    public double calcularHuella(double distancia, double carga) {
-        // La moto tiene una huella menor que el automóvil
-        return distancia * 40 + carga * 2; 
-    }
-
-    @Override
     public String toString() {
         return "Moto";
-    }
+    
 }
