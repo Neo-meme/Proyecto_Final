@@ -19,7 +19,7 @@ public class Camion extends Terrestres {
 
     @Override
     public double calcularHuella(double distancia, double carga) {
-        return distancia * 80 + carga * 4 ;
+        return distancia * 150 + carga * 8 ;
     }
 
     @Override

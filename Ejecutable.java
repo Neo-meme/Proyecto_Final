@@ -11,12 +11,15 @@ public class Ejecutable{
 
     // seccion donde ingresa los datos el usuario(peso y distancia) y llama al metodo menu para iniciar todo.
     public static void Run(){
-    
-        System.out.println("Ingrese la distancia (en km):");
+
+        System.out.println("\n=== Bienvenido al Sistema de Transporte ===");
+        System.out.println("===========================================");
+        System.out.println("\nIngrese la distancia (en km):");
         distancia = sc.nextDouble();
 
         System.out.println("Ingrese la carga a transportar (en kg):");
         carga = sc.nextDouble();
+        System.out.println("\n===========================================");
         /*
             crearcion de objetos para cada tipo de vehiculo 
             EJEMPLO Tengo un vehículo, pero en realidad es un camión, un automóvil, un dron, etc. Esto es polimorfismo. !acordarse!
@@ -27,9 +30,9 @@ public class Ejecutable{
          */
         
         Vehiculo[] vehiculos = {
-            //new Moto(),
+            new Moto(),
             new Automovil(),
-            //new Camion(),
+            new Camion(),
             new Dron()
         };
 
@@ -68,14 +71,14 @@ public class Ejecutable{
         }
 
         // Mostrar opciones
-        System.out.println("\n=== OPCIONES ===");
+        System.out.println("\n=== COMPARATIVA Y OPCIONES DE VEHÍCULOS DISPONIBLES ===");
 
         for (int i = 0; i < disponibles.size(); i++) {
             Vehiculo v = disponibles.get(i);
             System.out.println((i + 1) + ". " + v +
-                " | Costo: $" + v.calcularCosto(distancia, carga) +
+                "\n | Costo: $" + v.calcularCosto(distancia, carga) +
                 " | Tiempo: " + v.calcularTiempo(distancia) +
-                " | Huella: " + v.calcularHuella(distancia, carga));
+                " | Huella ecologica: " + v.calcularHuella(distancia, carga));
         }
 
         // Elegir
