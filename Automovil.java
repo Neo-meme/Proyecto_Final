@@ -1,6 +1,3 @@
-import java.text.NumberFormat;
-import java.util.Locale;
-
 public class Automovil extends Terrestres {
     /*
      Usamos la opcion Final en las variables, para que estas no puedan ser modificadas, es decir, que su valor se mantenga constante a lo largo del programa.
