@@ -1,23 +1,30 @@
 public abstract class Vehiculo {
 
-    private double velocidad;
-    private double capacidad_carga;
+    protected double velocidad;
+    protected double capacidad_carga;
+    protected double distancia_maxima;
 
-    public Vehiculo( double velocidad, double capacidad_carga) {
+    public Vehiculo(double velocidad, double capacidad_carga, double distancia_maxima) {
         this.velocidad = velocidad;
         this.capacidad_carga = capacidad_carga;
-        
+        this.distancia_maxima = distancia_maxima;
     }
 
-    //Funciones abstractas
-    public abstract double CalcularCosto(double distancia, double carga);
+    // Método abstracto (cada vehículo lo define)
+    public abstract double calcularCosto(double distancia, double carga);
 
-    public double CalcularTiempo(double distancia){
+    // Método general
+    public double calcularTiempo(double distancia) {
         return distancia / velocidad;
     }
 
+    // Validaciones
     public boolean validarCarga(double carga) {
         return carga <= capacidad_carga;
+    }
+
+    public boolean validarDistancia(double distancia) {
+        return distancia <= distancia_maxima;
     }
 
 
@@ -37,4 +44,13 @@ public abstract class Vehiculo {
     public void setCapacidad_carga(double capacidad_carga) {
         this.capacidad_carga = capacidad_carga;
     }
+
+    public double getDistancia_maxima() {
+        return distancia_maxima;
+    }
+
+    public void setDistancia_maxima(double distancia_maxima) {
+        this.distancia_maxima = distancia_maxima;
+    }
+
 }

@@ -4,16 +4,17 @@ public class Dron extends Aereos {
      Esto es útil para definir características fijas de cada tipo de vehículo.
     */
 
-    private static final double velocidad = 72.0; // Velocidad promedio en km/h
+    private static final double velocidad = 72; // Velocidad promedio en km/h
     private static final double capacidad_carga = 100; // Capacidad de carga en kg
+    private static final double distancia_maxima = 69; // Distancia máxima en km
 
     public Dron( ) {
-        super(velocidad, capacidad_carga);
+        super(velocidad, capacidad_carga, distancia_maxima);
     }
 
   @Override
-    public double CalcularCosto(double distancia, double carga) {
-        return distancia * 2 + carga * 0.1;
+    public double calcularCosto(double distancia, double carga) {
+        return distancia * 2000 + carga * 1200;
     }
 
 }
