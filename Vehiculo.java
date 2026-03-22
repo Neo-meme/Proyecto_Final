@@ -17,8 +17,12 @@ public abstract class Vehiculo {
     public double calcularTiempo(double distancia) {
         return distancia / velocidad;
     }
-
-    // Validaciones
+    /* Los métodos de validación de carga y distancia
+        no son Abstractos porque la validación de carga y distancia es igual para todos los vehículos ya que se limitaron para facilitrar el ejercicio,
+        por lo que no es necesario obligar a las subclases a implementarla.
+    */
+    
+    //seccion de Validaciones, compueba si la carga y la distancia están dentro de los límites del vehículo
     public boolean validarCarga(double carga) {
         return carga <= capacidad_carga;
     }

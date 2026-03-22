@@ -19,7 +19,7 @@ public class Ejecutable{
         /*
             crearcion de objetos para cada tipo de vehiculo 
             EJEMPLO Tengo un vehículo, pero en realidad es un camión, un automóvil, un dron, etc. Esto es polimorfismo. !acordarse!
-            
+
             se crea un arreglo de tipo Vehiculo, dentro del arreglo se crean los objetos de las clases concretas (Automovil, Dron, etc )
             ya que crear un objeto de tipo Vehiculo no es posible.
 
@@ -31,6 +31,10 @@ public class Ejecutable{
             //new Camion(),
             new Dron()
         };
+
+        for (Vehiculo vehiculo : vehiculos){
+            
+        }
     }
 
  
