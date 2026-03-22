@@ -27,9 +27,9 @@ public class Ejecutable{
          */
         
         Vehiculo[] vehiculos = {
-            //new Moto(),
+            new Moto(),
             new Automovil(),
-            //new Camion(),
+            new Camion(),
             new Dron()
         };
 
