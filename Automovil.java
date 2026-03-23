@@ -4,7 +4,7 @@ public class Automovil extends Terrestres {
      Esto es útil para definir características fijas de cada tipo de vehículo.
     */
 
-    private static final double velocidad = 70; // Velocidad promedio en km/h
+    private static final double velocidad = 75; // Velocidad promedio en km/h
     private static final double capacidad_carga = 3500; // Capacidad de carga en Kg siendo la conversion de 3.5 toneladas a kg
     private static final double distancia_maxima = 300; // Distancia máxima en km
 
@@ -14,8 +14,8 @@ public class Automovil extends Terrestres {
 
     @Override
     public double calcularCosto(double distancia, double carga) {
-        return distancia * 400 + carga * 50;
-    }
+        return distancia * 300 + carga * 40;
+    }           
 
     @Override
     public double calcularHuella(double distancia, double carga) {

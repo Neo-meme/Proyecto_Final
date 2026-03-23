@@ -14,7 +14,7 @@ public class Camion extends Terrestres {
 
     @Override
     public double calcularCosto(double distancia, double carga) {
-        return distancia * 600 + carga * 100;
+        return distancia * 550 + carga * 70;
     }
 
     @Override

@@ -14,8 +14,8 @@ public class Moto extends Terrestres {
 
     @Override
     public double calcularCosto(double distancia, double carga) {
-        return distancia * 300 + carga * 30;
-    }
+        return distancia * 200 + carga * 20;
+    }           
 
     @Override
     public double calcularHuella(double distancia, double carga) {

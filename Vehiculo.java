@@ -23,7 +23,7 @@ public abstract class Vehiculo {
         int horas = (int) tiempo;
         int minutos = (int) ((tiempo - horas) * 60);
 
-        return "Tiempo estimado: " + horas + " horas y " + minutos + " minutos";
+        return  horas + " horas y " + minutos + " minutos";
     }
 
 
@@ -35,11 +35,11 @@ public abstract class Vehiculo {
     //seccion de Validaciones, compueba si la carga y la distancia están dentro de los límites del vehículo
     public boolean validarCarga(double carga) {
         return carga <= capacidad_carga;
-    }
+    }            
 
     public boolean validarDistancia(double distancia) {
         return distancia <= distancia_maxima;
-    }
+    }      
 
 
     //Getters y Setters

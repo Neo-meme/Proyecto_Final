@@ -19,17 +19,18 @@ public class Ejecutable{
 
         System.out.println("Ingrese la carga a transportar (en kg):");
         carga = sc.nextDouble();
+
         System.out.println("\n===========================================");
         /*
             crearcion de objetos para cada tipo de vehiculo 
             EJEMPLO Tengo un vehículo, pero en realidad es un camión, un automóvil, un dron, etc. Esto es polimorfismo. !acordarse!
 
             se crea un arreglo de tipo Vehiculo, dentro del arreglo se crean los objetos de las clases concretas (Automovil, Dron, etc )
-            ya que crear un objeto de tipo Vehiculo no es posible.
+            ya que crear un objeto de la clase Vehiculo no es posible.
 
          */
         
-        Vehiculo[] vehiculos = {
+        Vehiculo[] vehiculos = { 
             new Moto(),
             new Automovil(),
             new Camion(),
@@ -44,7 +45,7 @@ public class Ejecutable{
         for (Vehiculo vehiculo : vehiculos){
             if(vehiculo.validarCarga(carga) && vehiculo.validarDistancia(distancia)){
                 disponibles.add(vehiculo);
-            }
+            }     
         }
 
         // Validar si hay opciones dentro de la lusta que se creo
@@ -55,30 +56,31 @@ public class Ejecutable{
 
         //aca usamos el metodo burbuja para ordenar la lista disponible por costo, de menor a mayor.
 
-        for (int i = 0; i < disponibles.size() - 1; i++) {
+        for (int i = 0; i < disponibles.size() - 1; i++) { 
             for (int j = i + 1; j < disponibles.size(); j++) {
 
                 Vehiculo actual = disponibles.get(i);
                 Vehiculo siguiente = disponibles.get(j);
 
                 if (actual.calcularCosto(distancia, carga) > 
-                     siguiente.calcularCosto(distancia, carga)) {
+                     siguiente.calcularCosto(distancia, carga)) { 
 
                     disponibles.set(i, siguiente);
-                    disponibles.set(j, actual);
-                }
+                    disponibles.set(j, actual);            
+                } 
             }
         }
 
         // Mostrar opciones
         System.out.println("\n=== COMPARATIVA Y OPCIONES DE VEHÍCULOS DISPONIBLES ===");
 
-        for (int i = 0; i < disponibles.size(); i++) {
+        for (int i = 0; i < disponibles.size(); i++) { {
             Vehiculo v = disponibles.get(i);
             System.out.println((i + 1) + ". " + v +
-                "\n | Costo: $" + v.calcularCosto(distancia, carga) +
-                " | Tiempo: " + v.calcularTiempo(distancia) +
+                "\n | Costo: $" + v.calcularCosto(distancia, carga) +" COP "+
+                " | Tiempo estimado: " + v.calcularTiempo(distancia) +
                 " | Huella ecologica: " + v.calcularHuella(distancia, carga));
+            }
         }
 
         // Elegir
@@ -93,8 +95,8 @@ public class Ejecutable{
         }
 
         
-    }
+    
 
     
+    }
 }
-
