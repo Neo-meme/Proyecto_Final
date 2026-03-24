@@ -89,3 +89,31 @@ public class Ejecutable {
 
         // Elegir con validación y try-catch genérico
         boolean opcionValida = false;
+        while (!opcionValida) {
+            try {
+                System.out.println("\nSeleccione una opción:");
+                opcion = sc.nextInt();
+
+                if (opcion >= 1 && opcion <= disponibles.size()) {
+                    Vehiculo elegido = disponibles.get(opcion - 1);
+                    
+                    // Mensaje emocionante usando el nombre ingresado
+                    System.out.println("\n=======================================================");
+                    System.out.println("¡Excelente elección, " + nombre + "! 🚀🎉");
+                    System.out.println("Has reservado con éxito: " + elegido.getClass().getSimpleName());
+                    System.out.println("¡Nos emociona muchísimo acompañarte en esta ruta! Gracias");
+                    System.out.println("por confiar en nuestro sistema para mover tu carga.");
+                    System.out.println("¡Prepárate, porque tu envío está en las mejores manos!");
+                    System.out.println("=======================================================\n");
+                    
+                    opcionValida = true; 
+                } else {
+                    System.out.println("Opción inválida. Por favor, selecciona un número entre 1 y " + disponibles.size() + ".");
+                }
+            } catch (Exception e) { // Usamos Exception genérica aquí también
+                System.out.println("¡Error! Debes ingresar un número entero correspondiente a tu elección.");
+                sc.nextLine(); 
+            }
+        }
+    }
+}
