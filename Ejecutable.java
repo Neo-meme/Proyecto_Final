@@ -1,12 +1,11 @@
 import java.util.ArrayList;
-import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Ejecutable {
 
     // seccion de variables globales
     static Scanner sc = new Scanner(System.in);
-    static String nombre; // Nueva variable para almacenar el nombre del cliente
+    static String nombre; // Variable para almacenar el nombre del cliente
     static double distancia;
     static double carga;
     static int opcion;
@@ -17,15 +16,13 @@ public class Ejecutable {
         System.out.println("\n=== Bienvenido al Sistema de Transporte ===");
         System.out.println("===========================================");
         
-        // Pedimos el nombre antes de entrar a pedir los números
         System.out.println("\nPor favor, ingresa tu nombre:");
         nombre = sc.nextLine();
 
-        // Bucle con try-catch para validar distancia y carga
+        // Bucle con try-catch genérico (Exception) para validar distancia y carga
         boolean datosIngresados = false;
         while (!datosIngresados) {
             try {
-                // Usamos el nombre para que el sistema sea más amigable
                 System.out.println("\nHola " + nombre + ", ingresa la distancia (en km):");
                 distancia = sc.nextDouble();
 
@@ -33,7 +30,7 @@ public class Ejecutable {
                 carga = sc.nextDouble();
                 
                 datosIngresados = true; 
-            } catch (InputMismatchException e) {
+            } catch (Exception e) { // Usamos Exception genérica aquí
                 System.out.println("¡Error! Por favor, ingresa únicamente valores numéricos (si usas decimales, revisa si tu sistema usa punto o coma).");
                 sc.nextLine(); // Limpia el buffer
             }
@@ -84,42 +81,11 @@ public class Ejecutable {
 
         for (int i = 0; i < disponibles.size(); i++) { 
             Vehiculo v = disponibles.get(i);
-            System.out.println((i + 1) + ". " + v.getClass().getSimpleName() +
+            System.out.println((i + 1) + ". " + v +
                 "\n | Costo: $" + v.calcularCosto(distancia, carga) +" COP "+
                 " | Tiempo estimado: " + v.calcularTiempo(distancia) +
                 " | Huella ecologica: " + v.calcularHuella(distancia, carga));
         }
 
-        // Elegir con validación y try-catch
+        // Elegir con validación y try-catch genérico
         boolean opcionValida = false;
-        while (!opcionValida) {
-            try {
-                System.out.println("\nSeleccione una opción:");
-                opcion = sc.nextInt();
-
-                if (opcion >= 1 && opcion <= disponibles.size()) {
-                    Vehiculo elegido = disponibles.get(opcion - 1);
-                    
-                    // Mensaje emocionante usando el nombre ingresado
-                    System.out.println("\n=======================================================");
-                    System.out.println("¡Excelente elección, " + nombre + "! 🚀🎉");
-                    System.out.println("Has reservado con éxito: " + elegido.getClass().getSimpleName());
-                    System.out.println("¡Nos emociona muchísimo acompañarte en esta ruta! Gracias");
-                    System.out.println("por confiar en nuestro sistema para mover tu carga.");
-                    System.out.println("¡Prepárate, porque tu envío está en las mejores manos!");
-                    System.out.println("=======================================================\n");
-                    
-                    opcionValida = true; 
-                } else {
-                    System.out.println("Opción inválida. Por favor, selecciona un número entre 1 y " + disponibles.size() + ".");
-                }
-            } catch (InputMismatchException e) {
-                System.out.println("¡Error! Debes ingresar un número entero correspondiente a tu elección.");
-                sc.nextLine(); 
-            }
-        }
-    }
-}
-    
-    }
-}
