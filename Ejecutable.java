@@ -5,6 +5,7 @@ public class Ejecutable{
 
     //seccion de variables globales, para que estas puedan ser utilizadas en cualquier parte del programa, como por ejemplo en el menu o en la seccion de ingreso de datos.
     static Scanner sc= new Scanner(System.in);
+    static String nombre; // Variable para almacenar el nombre del cliente
     static double distancia;
     static double carga;
     static int opcion;
@@ -14,11 +15,26 @@ public class Ejecutable{
 
         System.out.println("\n=== Bienvenido al Sistema de Transporte ===");
         System.out.println("===========================================");
-        System.out.println("\nIngrese la distancia (en km):");
-        distancia = sc.nextDouble();
 
-        System.out.println("Ingrese la carga a transportar (en kg):");
-        carga = sc.nextDouble();
+         System.out.println("\nPor favor, ingresa tu nombre:");
+        nombre = sc.nextLine();
+
+        // Bucle con try-catch genérico (Exception) para validar distancia y carga
+        boolean datosIngresados = false;
+        while (!datosIngresados) {
+            try {
+                System.out.println("\nHola " + nombre + ", ingresa la distancia (en km):");
+                distancia = sc.nextDouble();
+
+                System.out.println("Ingresa la carga a transportar (en kg):");
+                carga = sc.nextDouble();
+                
+                datosIngresados = true; 
+            } catch (Exception e) { // Usamos Exception genérica aquí
+                System.out.println("¡Error! Por favor, ingresa únicamente valores numéricos.");
+                sc.nextLine(); // Limpia el buffer
+            }
+        }
 
         System.out.println("\n===========================================");
         /*
@@ -49,8 +65,8 @@ public class Ejecutable{
         }
 
         // Validar si hay opciones dentro de la lusta que se creo
-        if (disponibles.isEmpty()) {
-            System.out.println("Lo sentinmos, no hay vehículos disponibles.");
+         if (disponibles.isEmpty()) {
+            System.out.println("Lo sentimos, no hay vehículos disponibles para esa carga y distancia.");
             return; // el returns sirve similar al break , termina aca y vuelve al inicio de la funcion Run()
         }
 
@@ -83,20 +99,33 @@ public class Ejecutable{
             }
         }
 
-        // Elegir
-        System.out.println("\nSeleccione una opción:");
-        int opcion = sc.nextInt();
+        // Elegir con validación y try-catch genérico
+        boolean opcionValida = false;
+        while (!opcionValida) {
+            try {
+                System.out.println("\nSeleccione una opción:");
+                opcion = sc.nextInt();
 
-        if (opcion >= 1 && opcion <= disponibles.size()) {
-            Vehiculo elegido = disponibles.get(opcion - 1);
-            System.out.println("Elegiste: " + elegido);
-        } else {
-            System.out.println("Opción inválida");
-        }
-
-        
-    
-
-    
+                if (opcion >= 1 && opcion <= disponibles.size()) {
+                    Vehiculo elegido = disponibles.get(opcion - 1);
+                    
+                    // Mensaje emocionante usando el nombre ingresado
+                    System.out.println("\n=======================================================");
+                    System.out.println("¡Excelente elección, " + nombre );
+                    System.out.println("Has reservado con éxito: " + elegido.getClass().getSimpleName());
+                    System.out.println("¡Nos emociona muchísimo acompañarte en esta ruta! Gracias");
+                    System.out.println("por confiar en nuestro sistema para mover tu carga.");
+                    System.out.println("¡Prepárate, porque tu envío está en las mejores manos!");
+                    System.out.println("=======================================================\n");
+                    
+                    opcionValida = true; 
+                }else {
+                    System.out.println("Opción inválida. Por favor, selecciona un número entre 1 y " + disponibles.size() + ".");
+                }
+            } catch (Exception e) { // Usamos Exception genérica aquí también
+                System.out.println("¡Error! Debes ingresar un número entero correspondiente a tu elección.");
+                sc.nextLine(); 
+            }
+        }    
     }
 }
