@@ -15,24 +15,49 @@ public class Ejecutable{
 
         System.out.println("\n=== Bienvenido al Sistema de Transporte ===");
         System.out.println("===========================================");
+          // Validación del nombre con try-catch
+        boolean nombreValido = false;
+        while (!nombreValido) {
+            try {
+                System.out.println("\nPor favor, ingresa tu nombre:");
+                nombre = sc.nextLine();
+                
+                // .trim() elimina espacios en blanco al inicio y al final
+                if (nombre.trim().isEmpty()) {
+                    throw new IllegalArgumentException("El nombre no puede estar vacío ni contener solo espacios.");
+                }
+                nombreValido = true;
+            } catch (IllegalArgumentException e) {
+                System.out.println("¡Error! " + e.getMessage());
+            }
+        }
 
-         System.out.println("\nPor favor, ingresa tu nombre:");
-        nombre = sc.nextLine();
-
-        // Bucle con try-catch genérico (Exception) para validar distancia y carga
+        
+        // Validación de distancia y carga para evitar negativos y letras
         boolean datosIngresados = false;
         while (!datosIngresados) {
             try {
                 System.out.println("\nHola " + nombre + ", ingresa la distancia (en km):");
-                distancia = sc.nextDouble();
+                distancia = Double.parseDouble(sc.nextLine()); // Usamos parseDouble para evitar el bug del Scanner
+
+                if (distancia <= 0) {
+                    throw new IllegalArgumentException("La distancia no puede ser un número negativo.");
+                }
 
                 System.out.println("Ingresa la carga a transportar (en kg):");
-                carga = sc.nextDouble();
+                carga = Double.parseDouble(sc.nextLine());
+
+                if (carga <= 0) {
+                    throw new IllegalArgumentException("La carga no puede ser un número negativo.");
+                }
                 
                 datosIngresados = true; 
-            } catch (Exception e) { // Usamos Exception genérica aquí
-                System.out.println("¡Error! Por favor, ingresa únicamente valores numéricos.");
-                sc.nextLine(); // Limpia el buffer
+            } catch (NumberFormatException e) { 
+                // Atrapa el error si el usuario escribe letras en lugar de números
+                System.out.println("¡Error! Por favor, ingresa únicamente valores numéricos válidos.");
+            } catch (IllegalArgumentException e) {
+                // Atrapa el error si son números negativos
+                System.out.println("¡Error! " + e.getMessage());
             }
         }
 
@@ -129,3 +154,4 @@ public class Ejecutable{
         }    
     }
 }
+
